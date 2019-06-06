@@ -41,5 +41,6 @@
 
   <!-- Project modules -->
   <modules>
+  	<module>microservices</module>
   </modules>
 </project>
