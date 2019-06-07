@@ -14,5 +14,6 @@
   <packaging>pom</packaging>
   
   <modules>
+    <module>course-registry</module>
   </modules>
 </project>
