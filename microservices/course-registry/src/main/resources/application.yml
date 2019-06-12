@@ -16,3 +16,18 @@ logging:
   level:
     com:
       ucuenca: DEBUG
+
+---
+
+spring:
+  profiles: docker
+  application:
+    name: course-registry
+
+server:
+  port: 8080
+
+logging:
+  level:
+    com:
+      ucuenca: INFO
