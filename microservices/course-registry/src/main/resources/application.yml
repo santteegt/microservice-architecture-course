@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: development
+
+---
+
+spring:
+  profiles: development
+  application:
+    name: course-registry
+
+server:
+  port: 8180
+
+logging:
+  level:
+    com:
+      ucuenca: DEBUG
