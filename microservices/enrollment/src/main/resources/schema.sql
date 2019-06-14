@@ -1,0 +1,20 @@
+DROP TABLE IF EXISTS enrollment;
+DROP TABLE IF EXISTS student;
+
+CREATE TABLE student (
+    id VARCHAR(10) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+creation_date TIMESTAMP NOT NULL,
+PRIMARY KEY (id));
+
+CREATE TABLE enrollment (
+    id VARCHAR(30) NOT NULL,
+    student_id VARCHAR(10) NOT NULL,
+faculty_id VARCHAR(10) NOT NULL,
+programme_id VARCHAR(10) NOT NULL,
+term INT NOT NULL,
+creation_date TIMESTAMP NOT NULL,
+PRIMARY KEY (id),
+CONSTRAINT enrollment_fk1 FOREIGN KEY (student_id)
+REFERENCES student (id)
+  ON UPDATE NO ACTION ON DELETE NO ACTION);
