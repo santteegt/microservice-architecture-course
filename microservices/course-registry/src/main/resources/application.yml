@@ -8,6 +8,14 @@ spring:
   profiles: development
   application:
     name: course-registry
+  datasource:
+    url: jdbc:postgresql://localhost:5433/registerdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create, update
 
 server:
   port: 8180
