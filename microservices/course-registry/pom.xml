@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.ucuenca.dtic</groupId>
 	<artifactId>course-registry</artifactId>
-	<version>${project.release}</version>
+<!--	<version>${project.release}</version>-->
 	<name>Courses Registry Microservice</name>
 	<description>Microservice to manage course registrations per Faculty</description>
 
@@ -71,6 +71,8 @@
 					<tag>${project.version}</tag>
 					<buildArgs>
 						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+						<POSTGRES_HOSTNAME>course-registry</POSTGRES_HOSTNAME>
+						<POSTGRES_PORT>5432</POSTGRES_PORT>
 					</buildArgs>
 				</configuration>
 			</plugin>
