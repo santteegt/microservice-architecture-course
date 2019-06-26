@@ -1,7 +1,9 @@
 package com.ucuenca.dtic.courseregistry.controller;
 
 import com.ucuenca.dtic.courseregistry.domain.TblCourses;
+import com.ucuenca.dtic.courseregistry.domain.TblFaculty;
 import com.ucuenca.dtic.courseregistry.service.CourseService;
+import com.ucuenca.dtic.courseregistry.service.FacultyService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,9 @@ public class CourseRegistryController {
     @Autowired
     CourseService courseService;
 
+    @Autowired
+    FacultyService facultyService;
+
     @RequestMapping("/courses")
     public Iterable<TblCourses> queryAllCourses(
             @RequestParam(value = "id", required = false) Optional<String> id) {
@@ -35,5 +40,11 @@ public class CourseRegistryController {
 
         LOG.debug("Requesting course with id={}", id);
         return courseService.getCourseById(id);
+    }
+
+    @RequestMapping("/faculty")
+    public Iterable<TblFaculty> queryAllFaculty() {
+
+        return facultyService.getAllFaculty();
     }
 }
