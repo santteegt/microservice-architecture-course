@@ -1,12 +1,16 @@
 package com.ucuenca.dtic.courseregistry.service;
 
 import com.ucuenca.dtic.courseregistry.domain.TblCourses;
+import com.ucuenca.dtic.courseregistry.repository.CourseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
 
 @Service
 public class CourseServiceImpl implements CourseService {
+
+    @Autowired
+    private CourseRepository courseRepository;
+
     /**
      * Query a {@link TblCourses} record by its courseCode id
      *
@@ -15,13 +19,7 @@ public class CourseServiceImpl implements CourseService {
      */
     @Override
     public TblCourses getCourseById(String courseCode) {
-        if (courseCode.compareTo("C001") == 0) {
-            TblCourses course = new TblCourses("C001");
-            course.setDescription("Demo Course");
-            return course;
-        } else {
-            return null;
-        }
+        return courseRepository.findOne(courseCode);
     }
 
     /**
@@ -31,8 +29,6 @@ public class CourseServiceImpl implements CourseService {
      */
     @Override
     public Iterable<TblCourses> findAllCourses() {
-        TblCourses course = new TblCourses("C001");
-        course.setDescription("Demo Course");
-        return Arrays.asList(course);
+        return courseRepository.findAll();
     }
 }
