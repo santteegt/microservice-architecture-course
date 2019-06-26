@@ -8,6 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import static org.hamcrest.Matchers.*;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -30,54 +33,72 @@ public class CourseRegistryControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
         ).andDo(print())
         .andExpect(status().isOk())
-        .andExpect(content().json("[{\"courseCode\":\"C001\",\"description\":\"Demo Course\"}]"));
+        .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(5)))
+        .andExpect(MockMvcResultMatchers.jsonPath("$[*].courseCode").isNotEmpty());
 
     }
 
     @Test
-    public void givenRegistry_andIdC001_whenGetCoursesByid_thenReturnCourse()
+    public void givenRegistry_andIdSUB001_whenGetCoursesByid_thenReturnCourse()
             throws Exception {
 
         mvc.perform(
-                get("/registry/courses?id=C001")
+                get("/registry/courses?id=SUB001")
                 .contentType(MediaType.APPLICATION_JSON)
         ).andDo(print())
         .andExpect(status().isOk())
-        .andExpect(content().json("[{\"courseCode\":\"C001\",\"description\":\"Demo Course\"}]"));
+        .andExpect(content().json("[{\"courseCode\":\"SUB001\",\"description\":\"MATEMATICAS\"}]"));
+
     }
 
     @Test
-    public void givenRegistry_andIdC002_whenGetCoursesByid_thenReturnNull()
+    public void givenRegistry_andIdSUB002_whenGetCoursesByid_thenReturnCourse()
             throws Exception {
 
         mvc.perform(
-                get("/registry/courses?id=C002")
+                get("/registry/courses?id=SUB002")
                 .contentType(MediaType.APPLICATION_JSON)
         ).andDo(print())
         .andExpect(status().isOk())
-        .andExpect(content().json("[null]"));
+        .andExpect(content().json("[{\"courseCode\":\"SUB002\",\"description\":\"CALCULO\"}]"));
     }
 
     @Test
-    public void givenRegistry_whenGetCoursesC001_thenReturnCourse()
+    public void givenRegistry_whenGetCoursesSUB001_thenReturnCourse()
             throws Exception {
 
         mvc.perform(
-                get("/registry/course/C001")
+                get("/registry/course/SUB001")
                         .contentType(MediaType.APPLICATION_JSON)
         ).andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().json("{\"courseCode\":\"C001\",\"description\":\"Demo Course\"}"));
+                .andExpect(content().json("{\"courseCode\":\"SUB001\",\"description\":\"MATEMATICAS\"}"));
     }
 
     @Test
-    public void givenRegistry_whenGetCoursesC002_thenReturnNull()
+    public void givenRegistry_whenGetCoursesSUB002_thenReturnCourse()
             throws Exception {
 
         mvc.perform(
-                get("/registry/courses/C002")
+                get("/registry/course/SUB002")
                         .contentType(MediaType.APPLICATION_JSON)
         ).andDo(print())
-                .andExpect(status().isNotFound());
+            .andExpect(status().isOk())
+            .andExpect(content().json("{\"courseCode\":\"SUB002\",\"description\":\"CALCULO\"}"));
     }
+
+    @Test
+    public void givenFaculty_whenGetFaculties_thenReturnFaculties()
+            throws Exception {
+
+        mvc.perform(
+                get("/registry/faculty")
+                        .contentType(MediaType.APPLICATION_JSON)
+        ).andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(4)))
+                .andExpect(MockMvcResultMatchers.jsonPath("$[*].facultyId").isNotEmpty());
+
+    }
+
 }
