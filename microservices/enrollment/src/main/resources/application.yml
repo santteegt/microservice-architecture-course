@@ -1,0 +1,49 @@
+spring:
+  profiles:
+    active: development
+
+---
+
+spring:
+  profiles: development
+  application:
+    name: enrollment
+  datasource:
+    url: jdbc:postgresql://localhost:5432/enrollmentdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    jpa:
+      hibernate:
+        ddl-auto: create,update
+
+server:
+  port: 8280
+
+logging:
+  level:
+    com:
+      ucuenca: DEBUG
+
+---
+
+spring:
+  profiles: docker
+  application:
+    name: enrollment
+  datasource:
+    url: jdbc:postgresql://enrollment:5432/enrollmentdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    jpa:
+      hibernate:
+        ddl-auto: create,update
+
+server:
+  port: 8080
+
+logging:
+  level:
+    com:
+      ucuenca: INFO
