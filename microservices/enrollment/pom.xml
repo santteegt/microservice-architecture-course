@@ -71,6 +71,8 @@
 					<tag>${project.version}</tag>
 					<buildArgs>
 						<JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+						<POSTGRES_HOSTNAME>enrollment</POSTGRES_HOSTNAME>
+						<POSTGRES_PORT>5432</POSTGRES_PORT>
 					</buildArgs>
 				</configuration>
 			</plugin>
