@@ -22,6 +22,7 @@
     <docker.maven.plugin.version>1.4.10</docker.maven.plugin.version>
     <docker.image.prefix>ucuenca</docker.image.prefix>
     <project.release>0.0.1-SNAPSHOT</project.release>
+    <frontend.maven.plugin.version>1.6</frontend.maven.plugin.version>
   </properties>
 
   <!-- Configuring default Maven compiler plugin -->
