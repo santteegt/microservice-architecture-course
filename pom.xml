@@ -42,5 +42,6 @@
   <!-- Project modules -->
   <modules>
   	<module>microservices</module>
+  	<module>frontend</module>
   </modules>
 </project>
