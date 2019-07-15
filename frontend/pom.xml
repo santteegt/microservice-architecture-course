@@ -13,4 +13,8 @@
   <name>Frontend Boilerplate using Agular 4 and Spring Boot</name>
   <packaging>pom</packaging>
 
+  <modules>
+    <module>registration-web</module>
+  </modules>
+
 </project>
