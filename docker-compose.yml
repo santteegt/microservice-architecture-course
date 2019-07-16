@@ -1,0 +1,46 @@
+version: '2'
+services:
+  course-registry:
+    hostname: course-registry
+    image: ucuenca/course-registry:0.0.1-SNAPSHOT
+    restart: always
+    ports:
+      - 8082:8080
+      - 5433:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: registerdb
+      SPRING_PROFILES_ACTIVE: docker
+    networks:
+      my-custom-net:
+
+  enrollment:
+    image: ucuenca/enrollment:0.0.1-SNAPSHOT
+    restart: always
+    ports:
+      - 8280:8080
+      - 5431:5432
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: enrollmentdb
+      SPRING_PROFILES_ACTIVE: docker
+
+  frontend:
+    hostname: frontend
+    image: ucuenca/registration-web:0.0.1-SNAPSHOT
+    ports:
+      - 5000:5000
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    networks:
+      my-custom-net:
+
+networks:
+ my-custom-net:
+   driver: bridge
+   ipam:
+    config:
+      - subnet: 10.5.0.0/16
+        gateway: 10.5.0.1
