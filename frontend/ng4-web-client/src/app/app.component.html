@@ -1,4 +1,20 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<app-courses></app-courses>
+<div class="menu-lateral">
 
-<app-faculty></app-faculty>
+    <div class="div-titulo-menu">
+      <div class="titulo-menu">
+        Sistema Matriculas
+        <div class="style-line"></div>
+        <div class="items-menu" routerLinkActive="active">
+          <a class="style-pipe" routerLink="/courses">Courses</a>        
+          <a class="style-pipe" routerLink="/faculty">Faculty</a>                          
+        </div>
+        
+      </div>
+      </div>
+  
+  </div>
+  
+  <div class="container container-style">
+      <router-outlet></router-outlet>
+  </div>

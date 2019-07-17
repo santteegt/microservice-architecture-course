@@ -7,6 +7,7 @@ import { ClienthttpService } from './api/clienthttp.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CoursesComponent } from './courses/courses.component';
 import { FacultyComponent } from './faculty/faculty.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,11 @@ import { FacultyComponent } from './faculty/faculty.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      {path: "courses", component: CoursesComponent},
+      {path: "faculty", component: FacultyComponent}      
+    ])    
   ],
   providers: [ClienthttpService],
   bootstrap: [AppComponent]

@@ -1,0 +1,54 @@
+.menu-lateral{
+    background-color: dimgray;
+    height: 85px;
+    width: 100%;
+}
+.div-titulo-menu{
+    text-align: center;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-right: 15px;
+}
+.titulo-menu{
+    color: white;
+    font-weight: 800;
+    font-size: 18px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ 
+}
+.style-line{
+    border-bottom-color: rgb(194, 193, 193);
+    border-bottom: 1px;
+    border-bottom-style: ridge;   
+}
+
+.items-menu{
+    text-align: left;
+    padding-left: 550px;
+    padding-top: 15px;
+    color: white;
+    font-weight: 800;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+.style-pipe{
+    padding-left: 20px;
+    padding-right: 20px;
+    border-right-color: blue;
+    border-right: 1px;
+    border-right-style: ridge;   
+
+}
+
+.style-pipe-final{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.container-style{
+    padding-left: 100px;
+    border: 1px 1px 1px 1px;
+    border-style: double;
+    background:lightblue;
+}
